@@ -39,22 +39,21 @@ First, a set of warm-up problems for everyone
 */
 // Q0: How many human officers are there?
 
-
-
+let count = humanOfficers.count
 
 // Q1: What percentage of humans are female?
 
-
-
+let femaleHumans = humanOfficers.filter { femaleOfficers.contains($0) }
+let percentage = ((femaleHumans.count*100)/humanOfficers.count)
 
 // Q2: How many first officers are human?
 
-
-
+let firstHumans = firstOfficers.keys.filter { humanOfficers.contains($0) }
+print(firstHumans.count)
 
 // Q3: Get a list of females sorted by name
 
-
+print(femaleOfficers.sorted())
 
 
 /*:
@@ -87,25 +86,24 @@ Group 1
 */
 // Q4: Create an array of officer objects who captain starships
 
-
-
+let allCaptains = captains.map { Officer(name: $0, ship: $1) }
+print(allCaptains)
 
 // Q5: Alphabetize the previous list by the captain's name
 
-
-
+let allCaptainsAlpha = allCaptains.sorted(by: { $0 < $1 })
+print(allCaptainsAlpha)
 
 /*:
 Group 2
 */
 // Q6: Create an array of officers serving as first officers who are also Vulcan
 
-
-
-
+let firstVulcan = firstOfficers.map { Officer(name: $0, ship: $1) }.filter { vulcanOfficers.contains($0.name) }
+print(firstVulcan)
 
 // Q7: How many these Vulcan first officers have names shorter than 5 characters?
 
-
-
+let shortNames = firstVulcan.reduce(0, { $0 + ($1.name.count < 5 ? 1 : 0) })
+print(shortNames)
 
